@@ -1,4 +1,4 @@
-import type { NewsItem, EventItem, GalleryItem } from './types';
+import type { NewsItem, MemoryItem, GalleryItem, TeamMember } from './types';
 
 export const images = {
   hero: 'https://images.pexels.com/photos/8533860/pexels-photo-8533860.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
@@ -9,16 +9,16 @@ export const images = {
   forest: 'https://images.pexels.com/photos/15639315/pexels-photo-15639315.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
 };
 
-export const news: NewsItem[] = [
+export const memories: MemoryItem[] = [
+  { title: 'As águas que descem da serra', excerpt: 'Memórias de quem cresceu ouvindo o som das nascentes que atravessam os bairros.', author: 'Dona Maria das Graças', date: '12 jun 2026', image: images.mountain },
+  { title: 'O trem que uniu Petrópolis', excerpt: 'Uma viagem no tempo pelos trilhos que construíram a identidade da cidade.', author: 'Seu Antônio Ferreira', date: '04 jun 2026', image: images.dawn },
+  { title: 'Festas de bairro: a serra que celebra', excerpt: 'Como as festas tradicionais mantêm viva a cultura de cada comunidade.', author: 'Cecília Rocha', date: '28 mai 2026', image: images.forest },
+];
+
+export const articles: NewsItem[] = [
   { title: 'SOS Serra promove mutirão de recuperação de nascentes', excerpt: 'Comunidade se reúne para cuidar das águas que atravessam os bairros da serra.', category: 'Ação comunitária', date: '12 jun 2026', image: images.mountain },
   { title: 'Memórias de Petrópolis: histórias que a serra guarda', excerpt: 'Uma conversa com moradores que ajudam a preservar a memória de cada encosta.', category: 'Memórias', date: '04 jun 2026', image: images.dawn },
   { title: 'Campanha de inverno arrecada cobertores e agasalhos', excerpt: 'A mobilização já alcançou 180 famílias e segue recebendo doações.', category: 'Campanhas', date: '28 mai 2026', image: images.forest },
-];
-
-export const events: EventItem[] = [
-  { title: 'Roda de conversa: a força da comunidade', date: '20 JUN 2026', day: '20', month: 'JUN', time: '10:00', place: 'Centro Comunitário da Serra', description: 'Um encontro aberto para compartilhar histórias, desafios e próximos passos do território.' },
-  { title: 'Mutirão pela Serra', date: '27 JUN 2026', day: '27', month: 'JUN', time: '08:00', place: 'Praça do Alto da Serra', description: 'Vamos cuidar juntos dos caminhos, praças e áreas verdes que fazem parte da nossa casa.' },
-  { title: 'Feira de projetos locais', date: '04 JUL 2026', day: '04', month: 'JUL', time: '14:00', place: 'Galpão da Estação', description: 'Uma tarde para conhecer iniciativas, produtores e talentos que movimentam a região.' },
 ];
 
 export const gallery: GalleryItem[] = [
@@ -28,4 +28,11 @@ export const gallery: GalleryItem[] = [
   { image: images.ridge, title: 'Mutirão pela Serra' },
   { image: images.dawn, title: 'Memórias vivas' },
   { image: images.forest, title: 'Natureza que aproxima' },
+];
+
+export const team: TeamMember[] = [
+  { name: 'Daniel Rufino', role: 'Coordenador geral', bio: 'Nascido e criado na serra, lidera as ações comunitárias há mais de dez anos.', image: 'https://images.pexels.com/photos/8543367/pexels-photo-8543367.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { name: 'Cecília Rocha', role: 'Articuladora cultural', bio: 'Responsável por recolher e preservar as histórias dos moradores da serra.', image: 'https://images.pexels.com/photos/6347743/pexels-photo-6347743.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { name: 'Seu Antônio Ferreira', role: 'Memória viva', bio: 'Morador histórico, guarda as memórias dos trilhos e caminhos da serra.', image: 'https://images.pexels.com/photos/33323689/pexels-photo-33323689.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { name: 'Lúcia Mendonça', role: 'Educadora ambiental', bio: 'Conduz as trilhas educativas e os mutirões de recuperação de nascentes.', image: 'https://images.pexels.com/photos/38925906/pexels-photo-38925906.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
 ];

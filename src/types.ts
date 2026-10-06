@@ -1,4 +1,4 @@
-export type View = 'home' | 'news' | 'events' | 'gallery' | 'admin';
+export type View = 'home' | 'memoria' | 'artigos' | 'gallery' | 'equipe';
 
 export type NewsItem = {
   title: string;
@@ -8,17 +8,22 @@ export type NewsItem = {
   image: string;
 };
 
-export type EventItem = {
+export type MemoryItem = {
   title: string;
+  excerpt: string;
+  author: string;
   date: string;
-  day: string;
-  month: string;
-  time: string;
-  place: string;
-  description: string;
+  image: string;
 };
 
 export type GalleryItem = {
   image: string;
   title: string;
+};
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
 };

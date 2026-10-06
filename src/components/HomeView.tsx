@@ -1,13 +1,12 @@
 import { ArrowRight, ChevronRight, Leaf, Sparkles } from 'lucide-react';
-import type { EventItem, View } from '../types';
-import { images, news, events } from '../data';
+import type { View } from '../types';
+import { images, memories, articles } from '../data';
 
 type HomeViewProps = {
   onNavigate: (view: View) => void;
-  onEvent: (event: EventItem) => void;
 };
 
-export function HomeView({ onNavigate, onEvent }: HomeViewProps) {
+export function HomeView({ onNavigate }: HomeViewProps) {
   return (
     <main>
       {/* Hero */}
@@ -20,7 +19,7 @@ export function HomeView({ onNavigate, onEvent }: HomeViewProps) {
             <h1>A serra que<br /><em>nos une.</em></h1>
             <p>Histórias, pessoas e ações que cuidam de Petrópolis todos os dias.</p>
             <div className="hero-actions">
-              <button className="button button-light" onClick={() => onNavigate('news')}>
+              <button className="button button-light" onClick={() => onNavigate('memoria')}>
                 Conheça nossas histórias <ArrowRight size={17} />
               </button>
               <button className="text-link light-link" onClick={() => onNavigate('gallery')}>
@@ -44,27 +43,27 @@ export function HomeView({ onNavigate, onEvent }: HomeViewProps) {
           </div>
           <div className="intro-copy">
             <p>Somos uma organização comunitária que acredita na força das pessoas e na beleza de cuidar do lugar onde vivemos.</p>
-            <button className="text-link" onClick={() => onNavigate('news')}>
+            <button className="text-link" onClick={() => onNavigate('memoria')}>
               Conheça nossa história <ArrowRight size={16} />
             </button>
           </div>
         </div>
       </section>
 
-      {/* News */}
+      {/* Memorias preview */}
       <section className="news-section">
         <div className="container">
           <div className="section-heading">
             <div>
               <div className="eyebrow">Do nosso território</div>
-              <h2>Últimas histórias</h2>
+              <h2>Folha da Memória</h2>
             </div>
-            <button className="text-link" onClick={() => onNavigate('news')}>
-              Ver todas as notícias <ArrowRight size={16} />
+            <button className="text-link" onClick={() => onNavigate('memoria')}>
+              Ver todas as memórias <ArrowRight size={16} />
             </button>
           </div>
           <div className="news-grid">
-            {news.map((item, index) => (
+            {memories.map((item, index) => (
               <article
                 className={`news-card ${index === 0 ? 'featured' : ''}`}
                 key={item.title}
@@ -72,7 +71,7 @@ export function HomeView({ onNavigate, onEvent }: HomeViewProps) {
               >
                 <div className="news-card-shade" />
                 <div className="news-card-content">
-                  <span>{item.category}</span>
+                  <span>{item.author}</span>
                   <h3>{item.title}</h3>
                   <div className="card-bottom">
                     <time>{item.date}</time>
@@ -107,28 +106,32 @@ export function HomeView({ onNavigate, onEvent }: HomeViewProps) {
         </div>
       </section>
 
-      {/* Events */}
-      <section className="events-section">
+      {/* Artigos preview */}
+      <section className="news-section">
         <div className="container">
           <div className="section-heading">
             <div>
-              <div className="eyebrow">Acontece na serra</div>
-              <h2>Próximos encontros</h2>
+              <div className="eyebrow">Artigos recentes</div>
+              <h2>Últimas histórias</h2>
             </div>
-            <button className="text-link" onClick={() => onNavigate('events')}>
-              Ver calendário <ArrowRight size={16} />
+            <button className="text-link" onClick={() => onNavigate('artigos')}>
+              Ver todos os artigos <ArrowRight size={16} />
             </button>
           </div>
-          <div className="event-list">
-            {events.slice(0, 2).map((event) => (
-              <button className="event-row" key={event.title} onClick={() => onEvent(event)}>
-                <div className="event-date"><strong>{event.day}</strong><span>{event.month}</span></div>
-                <div className="event-info">
-                  <span className="event-tag">{event.time} · {event.place}</span>
-                  <h3>{event.title}</h3>
+          <div className="archive-grid">
+            {articles.slice(0, 2).map((item) => (
+              <article className="archive-card" key={item.title}>
+                <div className="archive-image" style={{ backgroundImage: `url(${item.image})` }} />
+                <div className="archive-copy">
+                  <span className="card-category">{item.category}</span>
+                  <h2>{item.title}</h2>
+                  <p>{item.excerpt}</p>
+                  <div className="card-bottom">
+                    <time>{item.date}</time>
+                    <button className="round-arrow"><ArrowRight size={17} /></button>
+                  </div>
                 </div>
-                <ArrowRight className="event-arrow" size={20} />
-              </button>
+              </article>
             ))}
           </div>
         </div>
@@ -143,7 +146,7 @@ export function HomeView({ onNavigate, onEvent }: HomeViewProps) {
             <h2>Tem uma história para contar?</h2>
             <p>Envie uma mensagem. A serra também é feita da sua voz.</p>
           </div>
-          <button className="button button-light" onClick={() => onNavigate('news')}>
+          <button className="button button-light" onClick={() => onNavigate('equipe')}>
             Fale com a gente <ArrowRight size={17} />
           </button>
         </div>

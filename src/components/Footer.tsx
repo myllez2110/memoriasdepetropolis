@@ -16,9 +16,10 @@ export function Footer({ onNavigate }: FooterProps) {
         </div>
         <div className="footer-links">
           <span>Explorar</span>
-          <button onClick={() => onNavigate('news')}>Notícias</button>
-          <button onClick={() => onNavigate('events')}>Eventos</button>
+          <button onClick={() => onNavigate('memoria')}>Folha da Memória</button>
+          <button onClick={() => onNavigate('artigos')}>Artigos</button>
           <button onClick={() => onNavigate('gallery')}>Galeria</button>
+          <button onClick={() => onNavigate('equipe')}>Equipe</button>
         </div>
         <div className="footer-links">
           <span>Fale com a gente</span>

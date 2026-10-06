@@ -1,4 +1,4 @@
-import { Menu, ShieldCheck, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import type { View } from '../types';
 import { Logo } from './Logo';
 
@@ -11,9 +11,10 @@ type HeaderProps = {
 
 const navItems: [View, string][] = [
   ['home', 'Início'],
-  ['news', 'Notícias'],
-  ['events', 'Eventos'],
+  ['memoria', 'Folha da Memória'],
+  ['artigos', 'Artigos'],
   ['gallery', 'Galeria'],
+  ['equipe', 'Equipe'],
 ];
 
 export function Header({ view, menuOpen, onNavigate, onToggleMenu }: HeaderProps) {
@@ -29,9 +30,6 @@ export function Header({ view, menuOpen, onNavigate, onToggleMenu }: HeaderProps
               {label}
             </button>
           ))}
-          <button className="admin-link" onClick={() => onNavigate('admin')}>
-            <ShieldCheck size={15} /> Área administrativa
-          </button>
         </nav>
         <button className="menu-button" onClick={onToggleMenu} aria-label="Abrir menu">
           {menuOpen ? <X /> : <Menu />}
