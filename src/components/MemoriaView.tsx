@@ -1,50 +1,122 @@
-import { ArrowRight, BookOpen, Search } from 'lucide-react';
+import { ArrowLeft, ArrowRight, FileText } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import type { MemoryItem } from '../types';
-import { memories } from '../data';
+
+import { edicoes } from '../data';
 
 export function MemoriaView() {
-  const [query, setQuery] = useState('');
+  const [pdfSelecionado, setPdfSelecionado] = useState<string | null>(null);
+  const [tituloPdf, setTituloPdf] = useState('');
 
-  const filtered = useMemo(
-    () => memories.filter((m) =>
-      `${m.title} ${m.excerpt} ${m.author}`.toLowerCase().includes(query.toLowerCase())
-    ),
-    [query]
-  );
+  const edicoesPorAno = useMemo(() => {
+    const grupos: Record<number, typeof edicoes> = {};
+
+    edicoes.forEach((edicao) => {
+      if (!grupos[edicao.ano]) {
+        grupos[edicao.ano] = [];
+      }
+
+      grupos[edicao.ano].push(edicao);
+    });
+
+    return Object.entries(grupos).sort(
+      ([anoA], [anoB]) => Number(anoB) - Number(anoA)
+    );
+  }, []);
+
+  function abrirPdf(pdf: string, mes: string, ano: number) {
+    setPdfSelecionado(pdf);
+    setTituloPdf(`${mes} ${ano}`);
+  }
+
+  function fecharPdf() {
+    setPdfSelecionado(null);
+    setTituloPdf('');
+  }
+
+  if (pdfSelecionado) {
+    return (
+      <main className="pdf-page">
+        <header className="pdf-header">
+          <button className="pdf-back" onClick={fecharPdf}>
+            <ArrowLeft size={18} />
+            Voltar ao arquivo
+          </button>
+
+          <div className="pdf-heading">
+            <span>Folha da Memória</span>
+            <h1>{tituloPdf}</h1>
+          </div>
+        </header>
+
+        <section className="pdf-viewer">
+          <iframe
+            src={`${pdfSelecionado}#toolbar=1&navpanes=0`}
+            title={tituloPdf}
+          />
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="inner-page">
       <div className="container page-heading">
         <div className="eyebrow">Folha da Memória</div>
-        <h1>Histórias que<br /><em>a serra guarda.</em></h1>
-        <p>Relatos, lembranças e memórias de quem faz parte da história de Petrópolis.</p>
+
+        <h1>
+          Arquivo das
+          <br />
+          <em>edições.</em>
+        </h1>
+
+        <p>
+          Consulte as edições da Folha da Memória e conheça as histórias
+          preservadas.
+        </p>
       </div>
 
-      <div className="container content-toolbar">
-        <div className="toolbar-label"><BookOpen size={18} /> Arquivo de memórias</div>
-        <label className="search-box">
-          <Search size={17} />
-          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar uma memória" />
-        </label>
+      <div className="container arquivo-header">
+        <div className="arquivo-label">
+          <FileText size={18} />
+          Arquivo digital
+        </div>
+
+        <span>{edicoes.length} edições</span>
       </div>
 
-      <div className="container memoria-grid">
-        {filtered.map((item: MemoryItem) => (
-          <article className="memoria-card" key={item.title}>
-            <div className="memoria-image" style={{ backgroundImage: `url(${item.image})` }} />
-            <div className="memoria-copy">
-              <span className="card-category">{item.author}</span>
-              <h2>{item.title}</h2>
-              <p>{item.excerpt}</p>
-              <div className="card-bottom">
-                <time>{item.date}</time>
-                <button className="round-arrow"><ArrowRight size={17} /></button>
-              </div>
+      <div className="container arquivo">
+        {edicoesPorAno.map(([ano, lista]) => (
+          <section className="ano" key={ano}>
+            <div className="ano-title">
+              <span>Arquivo</span>
+              <h2>{ano}</h2>
             </div>
-          </article>
+
+            <div className="edicoes">
+              {lista.map((edicao) => (
+                <button
+                  className="edicao"
+                  key={`${edicao.mes}-${edicao.ano}`}
+                  onClick={() =>
+                    abrirPdf(edicao.pdf, edicao.mes, edicao.ano)
+                  }
+                >
+                  <div className="edicao-icon">
+                    <FileText size={22} />
+                  </div>
+
+                  <div className="edicao-text">
+                    <span>Edição</span>
+                    <h3>{edicao.mes}</h3>
+                    <time>{edicao.ano}</time>
+                  </div>
+
+                  <ArrowRight className="edicao-arrow" size={20} />
+                </button>
+              ))}
+            </div>
+          </section>
         ))}
-        {filtered.length === 0 && <div className="empty-state">Nenhuma memória encontrada. Tente outro termo.</div>}
       </div>
     </main>
   );

@@ -1,5 +1,22 @@
 import type { NewsItem, MemoryItem, GalleryItem, TeamMember } from './types';
+export type Edicao = {
+  mes: string;
+  ano: number;
+  pdf: string;
+};
 
+export const edicoes: Edicao[] = [
+  {
+    mes: 'Setembro',
+    ano: 2026,
+    pdf: '/pdfs/2026/setembro.pdf',
+  },
+  {
+    mes: 'Agosto',
+    ano: 2026,
+    pdf: '/pdfs/2026/agosto.pdf',
+  }
+];
 export const images = {
   hero: 'https://images.pexels.com/photos/8533860/pexels-photo-8533860.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   mountain: 'https://images.pexels.com/photos/30057008/pexels-photo-30057008.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',

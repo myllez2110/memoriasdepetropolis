@@ -4,16 +4,12 @@ type LogoProps = {
 
 export function Logo({ dark = false }: LogoProps) {
   return (
-    <div className={`brand ${dark ? 'brand-dark' : ''}`}>
+    <div className={`brand${dark ? ' brand-dark' : ''}`}>
       <span className="brand-mark">
-        <img
-          src="/images/logo.png"
-          alt="Logo"
-        />
+        <img src="/images/logo.png" alt="Logo" />
       </span>
-
       <span className="brand-name">
-        Memórias de Petrópolis
+        MEMÓRIAS DE PETRÓPOLIS
       </span>
     </div>
   );
