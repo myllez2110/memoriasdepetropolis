@@ -2,20 +2,24 @@ import type { NewsItem, MemoryItem, GalleryItem, TeamMember } from './types';
 export type Edicao = {
   mes: string;
   ano: number;
+  turma: 'A' | 'B';
   pdf: string;
 };
 
+export const mesesOrdem = [
+  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro',
+];
+
 export const edicoes: Edicao[] = [
-  {
-    mes: 'Setembro',
-    ano: 2026,
-    pdf: '/pdfs/2026/setembro.pdf',
-  },
-  {
-    mes: 'Agosto',
-    ano: 2026,
-    pdf: '/pdfs/2026/agosto.pdf',
-  }
+  { mes: 'Setembro', ano: 2026, turma: 'A', pdf: '/pdfs/2026/setembro-a.pdf' },
+  { mes: 'Setembro', ano: 2026, turma: 'B', pdf: '/pdfs/2026/setembro-b.pdf' },
+  { mes: 'Agosto', ano: 2026, turma: 'A', pdf: '/pdfs/2026/agosto-a.pdf' },
+  { mes: 'Agosto', ano: 2026, turma: 'B', pdf: '/pdfs/2026/agosto-b.pdf' },
+  { mes: 'Julho', ano: 2026, turma: 'A', pdf: '/pdfs/2026/julho-a.pdf' },
+  { mes: 'Julho', ano: 2026, turma: 'B', pdf: '/pdfs/2026/julho-b.pdf' },
+  { mes: 'Junho', ano: 2025, turma: 'A', pdf: '/pdfs/2025/junho-a.pdf' },
+  { mes: 'Junho', ano: 2025, turma: 'B', pdf: '/pdfs/2025/junho-b.pdf' },
 ];
 export const images = {
   hero: 'https://images.pexels.com/photos/8533860/pexels-photo-8533860.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
@@ -48,8 +52,7 @@ export const gallery: GalleryItem[] = [
 ];
 
 export const team: TeamMember[] = [
-  { name: 'Daniel Rufino', role: 'Coordenador geral', bio: 'Nascido e criado na serra, lidera as ações comunitárias há mais de dez anos.', image: 'https://images.pexels.com/photos/8543367/pexels-photo-8543367.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
-  { name: 'Cecília Rocha', role: 'Articuladora cultural', bio: 'Responsável por recolher e preservar as histórias dos moradores da serra.', image: 'https://images.pexels.com/photos/6347743/pexels-photo-6347743.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
-  { name: 'Seu Antônio Ferreira', role: 'Memória viva', bio: 'Morador histórico, guarda as memórias dos trilhos e caminhos da serra.', image: 'https://images.pexels.com/photos/33323689/pexels-photo-33323689.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
-  { name: 'Lúcia Mendonça', role: 'Educadora ambiental', bio: 'Conduz as trilhas educativas e os mutirões de recuperação de nascentes.', image: 'https://images.pexels.com/photos/38925906/pexels-photo-38925906.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { name: 'Carolina Freitas', role: 'Coordenadora do Folha da Memória', bio: 'Professora que coordena o jornal escrito pelos próprios alunos com base nos conteúdos aprendidos a cada ciclo do projeto.', image: 'https://images.pexels.com/photos/8543367/pexels-photo-8543367.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { name: 'Raquel Neves', role: 'Guia de turismo · Aulas de campo', bio: 'Acompanha os alunos nas saídas de campo, ajudando-os a se apropriarem dos espaços e histórias da cidade.', image: 'https://images.pexels.com/photos/6347743/pexels-photo-6347743.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { name: 'Associação SOS Serra', role: 'Realização', bio: 'Entidade responsável pelo Memórias de Petrópolis, criado em setembro de 2023 para despertar o pertencimento dos jovens à cidade.', image: 'https://images.pexels.com/photos/33323689/pexels-photo-33323689.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
 ];

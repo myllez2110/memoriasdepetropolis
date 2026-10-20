@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronRight, Leaf, Sparkles } from 'lucide-react';
+import { ArrowRight, BookOpen, ChevronRight, GraduationCap, MapPin, Newspaper, PenLine, Sparkles } from 'lucide-react';
 import type { View } from '../types';
 import { images, memories, articles } from '../data';
 
@@ -15,12 +15,12 @@ export function HomeView({ onNavigate }: HomeViewProps) {
         <div className="hero-overlay" />
         <div className="container hero-content">
           <div className="hero-copy">
-            <div className="eyebrow light">Memórias de Petrópolis</div>
-            <h1>A serra que<br /><em>nos une.</em></h1>
-            <p>Histórias, pessoas e ações que cuidam de Petrópolis todos os dias.</p>
+            <div className="eyebrow light">Associação SOS Serra</div>
+            <h1>Memórias de<br /><em>Petrópolis.</em></h1>
+            <p>Um projeto que desperta na juventude o interesse pelas histórias da cidade e o pertencimento ao lugar onde vivem.</p>
             <div className="hero-actions">
               <button className="button button-light" onClick={() => onNavigate('memoria')}>
-                Conheça nossas histórias <ArrowRight size={17} />
+                Folha da Memória <ArrowRight size={17} />
               </button>
               <button className="text-link light-link" onClick={() => onNavigate('gallery')}>
                 Ver galeria <ChevronRight size={16} />
@@ -29,7 +29,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
           </div>
           <div className="hero-caption">
             <span>01</span><i /><span>04</span>
-            <p>Serra do Mar<br />Rio de Janeiro</p>
+            <p>Petrópolis<br />Rio de Janeiro</p>
           </div>
         </div>
       </section>
@@ -38,19 +38,86 @@ export function HomeView({ onNavigate }: HomeViewProps) {
       <section className="intro-section">
         <div className="container intro-grid">
           <div>
-            <div className="eyebrow">Sobre o SOS Serra</div>
-            <h2>Uma rede feita de <em>presença</em>.</h2>
+            <div className="eyebrow">O projeto</div>
+            <h2>Um convite para <em>pertencer.</em></h2>
           </div>
           <div className="intro-copy">
-            <p>Somos uma organização comunitária que acredita na força das pessoas e na beleza de cuidar do lugar onde vivemos.</p>
-            <button className="text-link" onClick={() => onNavigate('memoria')}>
-              Conheça nossa história <ArrowRight size={16} />
+            <p>Nascido em setembro de 2023, o Memórias de Petrópolis nasceu de uma queixa ouvida com recorrência entre os alunos: a sensação de que os bairros da cidade pouco tinham memória, como se o passado estivesse restrito aos casarões do Centro Histórico.</p>
+            <p>Desde então, oficinas semanais e gratuitas descentralizam as narrativas sobre a história da cidade, levando os jovens a descobrir que cada bairro guarda histórias vivas — inclusive as que eles mesmos começam a construir.</p>
+            <button className="text-link" onClick={() => onNavigate('equipe')}>
+              Conheça a equipe <ArrowRight size={16} />
             </button>
           </div>
         </div>
       </section>
 
-      {/* Memorias preview */}
+      {/* Sobre / nova sede */}
+      <section className="impact-section">
+        <div className="container impact-grid">
+          <div className="impact-photo" style={{ backgroundImage: `url(${images.sunrise})` }}>
+            <div className="impact-badge">
+              <MapPin size={18} />
+              <span>Nova sede desde<br /><strong>março de 2026</strong></span>
+            </div>
+          </div>
+          <div className="impact-copy">
+            <div className="eyebrow">Onde estamos</div>
+            <h2>Uma casa que<br /><em>cresceu.</em></h2>
+            <p>Após três anos na Escola Germano Valente, o projeto ganhou casa nova no prédio do CEFET, na Rua do Imperador. Hoje, integram o Memórias de Petrópolis estudantes de quatro escolas municipais: Germano Valente, Professora Maria Campos, Clemente Fernandes e Dr. Rubens de Castro Bomtempo.</p>
+            <div className="impact-numbers">
+              <div><strong>4</strong><span>escolas parceiras</span></div>
+              <div><strong>2023</strong><span>ano de fundação</span></div>
+              <div><strong>2</strong><span>turmas ativas</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Como funciona */}
+      <section className="news-section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <div className="eyebrow">O que fazemos</div>
+              <h2>Muito além da sala de aula.</h2>
+            </div>
+          </div>
+          <div className="pilhas-grid">
+            <article className="pilha-card">
+              <div className="pilha-icon"><GraduationCap size={24} /></div>
+              <h3>Oficinas semanais</h3>
+              <p>Aulas dinâmicas pautadas por fotografias, conteúdos audiovisuais e gincanas que tornam o aprendizado mais estimulante.</p>
+            </article>
+            <article className="pilha-card">
+              <div className="pilha-icon"><MapPin size={24} /></div>
+              <h3>Aulas de campo</h3>
+              <p>Saídas recorrentes em que os alunos se apropriam de espaços e histórias da cidade, com acompanhamento da guia Raquel Neves.</p>
+            </article>
+            <article className="pilha-card">
+              <div className="pilha-icon"><PenLine size={24} /></div>
+              <h3>Laboratórios de escrita</h3>
+              <p>Com a transferência para o CEFET, os alunos passaram a ter acesso a laboratórios de escrita e informática para uma formação integrada.</p>
+            </article>
+            <article className="pilha-card">
+              <div className="pilha-icon"><Sparkles size={24} /></div>
+              <h3>Guardiões da Memória</h3>
+              <p>Programa de bonificação que convida os alunos de destaque de cada mês a viver experiências culturais como reconhecimento por sua dedicação.</p>
+            </article>
+            <article className="pilha-card">
+              <div className="pilha-icon"><Newspaper size={24} /></div>
+              <h3>Folha da Memória</h3>
+              <p>Jornal coordenado pela professora Carolina Freitas e escrito pelos próprios alunos com base nos conteúdos aprendidos a cada ciclo.</p>
+            </article>
+            <article className="pilha-card">
+              <div className="pilha-icon"><BookOpen size={24} /></div>
+              <h3>Pertencimento</h3>
+              <p>A partir do contato com lugares, personagens e histórias do território, encorajamos os alunos a conhecerem e zelarem pelo patrimônio da cidade.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Folha da Memória preview */}
       <section className="news-section">
         <div className="container">
           <div className="section-heading">
@@ -59,7 +126,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
               <h2>Folha da Memória</h2>
             </div>
             <button className="text-link" onClick={() => onNavigate('memoria')}>
-              Ver todas as memórias <ArrowRight size={16} />
+              Ver todas as edições <ArrowRight size={16} />
             </button>
           </div>
           <div className="news-grid">
@@ -80,28 +147,6 @@ export function HomeView({ onNavigate }: HomeViewProps) {
                 </div>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Impact */}
-      <section className="impact-section">
-        <div className="container impact-grid">
-          <div className="impact-photo" style={{ backgroundImage: `url(${images.sunrise})` }}>
-            <div className="impact-badge">
-              <Leaf size={18} />
-              <span>Nosso impacto<br /><strong>em movimento</strong></span>
-            </div>
-          </div>
-          <div className="impact-copy">
-            <div className="eyebrow">Por que fazemos</div>
-            <h2>Cuidar é um verbo<br /><em>coletivo.</em></h2>
-            <p>Quando uma pessoa se move, a comunidade inteira ganha novos caminhos. É assim que transformamos cuidado em presença, e presença em futuro.</p>
-            <div className="impact-numbers">
-              <div><strong>180+</strong><span>famílias alcançadas</span></div>
-              <div><strong>24</strong><span>ações em 2026</span></div>
-              <div><strong>12</strong><span>bairros parceiros</span></div>
-            </div>
           </div>
         </div>
       </section>
@@ -144,7 +189,7 @@ export function HomeView({ onNavigate }: HomeViewProps) {
           <div>
             <div className="eyebrow light">Faça parte</div>
             <h2>Tem uma história para contar?</h2>
-            <p>Envie uma mensagem. A serra também é feita da sua voz.</p>
+            <p>A serra também é feita da sua voz. Envie uma mensagem e participe.</p>
           </div>
           <button className="button button-light" onClick={() => onNavigate('equipe')}>
             Fale com a gente <ArrowRight size={17} />

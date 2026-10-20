@@ -12,7 +12,7 @@ export function Footer({ onNavigate }: FooterProps) {
       <div className="container footer-grid">
         <div>
           <Logo dark />
-          <p>Histórias, pessoas e ações<br />que cuidam de Petrópolis.</p>
+          <p>Um projeto da Associação SOS Serra<br />que desperta o pertencimento dos jovens à cidade.</p>
         </div>
         <div className="footer-links">
           <span>Explorar</span>

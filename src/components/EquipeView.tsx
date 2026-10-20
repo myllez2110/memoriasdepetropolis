@@ -6,8 +6,8 @@ export function EquipeView() {
     <main className="inner-page">
       <div className="container page-heading">
         <div className="eyebrow">Nossa equipe</div>
-        <h1>Quem cuida<br /><em>da serra.</em></h1>
-        <p>Pessoas que dedicam seus dias a preservar a memória e o futuro de Petrópolis.</p>
+        <h1>Quem faz<br /><em>a memória.</em></h1>
+        <p>Pessoas que dedicam seus dias a preservar as histórias de Petrópolis e ao pertencimento dos jovens à cidade.</p>
       </div>
 
       <div className="container equipe-grid">
@@ -26,8 +26,8 @@ export function EquipeView() {
       <div className="container equipe-cta">
         <div>
           <div className="eyebrow light">Quer fazer parte?</div>
-          <h2>A serra precisa de você.</h2>
-          <p>Envie uma mensagem. A serra também é feita da sua voz.</p>
+          <h2>A memória precisa de você.</h2>
+          <p>Envie uma mensagem. A história de Petrópolis também é feita da sua voz.</p>
         </div>
         <a className="button button-light" href="mailto:contato@sosserra.org.br">
           <Mail size={17} /> Fale com a gente
