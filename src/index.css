@@ -186,6 +186,30 @@ img { display: block; max-width: 100%; }
   height: 24px;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--forest-800);
+  background: var(--forest-50);
+  transition: all 0.25s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--forest-100);
+  color: var(--forest-700);
+  transform: rotate(-15deg);
+}
+
 /* Hero */
 .hero-section { position: relative; height: 92vh; min-height: 620px; overflow: hidden; display: flex; align-items: center; }
 .hero-image {
@@ -823,4 +847,124 @@ img { display: block; max-width: 100%; }
   .equipe-cta { flex-direction: column; align-items: flex-start; gap: 24px; padding: 32px; }
   .equipe-cta .button { margin-left: 0; }
   .pilhas-grid { grid-template-columns: 1fr; }
+}
+
+/* Dark mode */
+.app-shell.dark {
+  --cream: #0a100d;
+  --forest-50: #131d18;
+  --forest-100: #1b2c22;
+  --forest-200: #284234;
+  --forest-700: #4cb378;
+  --forest-800: #3d9663;
+  --ink-100: #243029;
+  --ink-200: #36473d;
+  --ink-300: #6a8276;
+  --ink-400: #a8c2b5;
+  --ink-500: #c9dbd1;
+  --ink-600: #e1ece5;
+  --ink-700: #eef4ef;
+  --ink-800: #f7faf7;
+  --ink-900: #ffffff;
+  --sand-50: #131a16;
+  --sand-100: #1a2420;
+}
+
+.app-shell.dark body,
+.app-shell.dark {
+  background: var(--cream);
+  color: var(--ink-500);
+}
+
+.app-shell.dark h1,
+.app-shell.dark h2,
+.app-shell.dark h3,
+.app-shell.dark h4 { color: var(--ink-800); }
+
+.app-shell.dark h1 em,
+.app-shell.dark h2 em { color: var(--forest-700); }
+
+.app-shell.dark p { color: var(--ink-400); }
+
+.app-shell.dark .site-header {
+  background: rgba(14, 22, 18, 0.85);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.app-shell.dark .brand-name { color: var(--ink-100); }
+
+.app-shell.dark .main-nav button { color: var(--ink-300); }
+.app-shell.dark .main-nav button:hover { color: var(--forest-700); background: var(--forest-50); }
+.app-shell.dark .main-nav button.active { color: var(--forest-800); background: var(--forest-100); }
+
+.app-shell.dark .theme-toggle { color: var(--ink-300); background: var(--forest-50); }
+.app-shell.dark .theme-toggle:hover { color: var(--amber-400); background: var(--forest-100); }
+
+.app-shell.dark .menu-button { color: var(--ink-100); }
+
+.app-shell.dark .eyebrow { color: var(--forest-700); }
+
+.app-shell.dark .intro-section,
+.app-shell.dark .news-section { background: var(--cream); }
+
+.app-shell.dark .impact-section { background: var(--forest-50); }
+
+.app-shell.dark .impact-badge { background: rgba(20, 30, 24, 0.95); }
+.app-shell.dark .impact-badge span { color: var(--ink-300); }
+.app-shell.dark .impact-badge strong { color: var(--ink-800); }
+.app-shell.dark .impact-numbers { border-top-color: var(--forest-200); }
+.app-shell.dark .impact-numbers strong { color: var(--forest-700); }
+
+.app-shell.dark .pilha-card {
+  background: var(--forest-50);
+  border-color: var(--ink-100);
+}
+.app-shell.dark .pilha-card:hover { border-color: var(--forest-700); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); }
+.app-shell.dark .pilha-icon { background: var(--forest-100); color: var(--forest-700); }
+
+.app-shell.dark .equipe-card {
+  background: var(--forest-50);
+  border-color: var(--ink-100);
+}
+.app-shell.dark .equipe-card:hover { border-color: var(--forest-700); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); }
+.app-shell.dark .equipe-role { color: var(--forest-700); }
+
+.app-shell.dark .content-toolbar { border-top-color: var(--ink-100); border-bottom-color: var(--ink-100); }
+.app-shell.dark .toolbar-label { color: var(--ink-700); }
+.app-shell.dark .search-box { background: var(--forest-50); border-color: var(--ink-200); }
+.app-shell.dark .search-box input { color: var(--ink-800); }
+
+.app-shell.dark .round-arrow { background: var(--forest-50); color: var(--forest-700); }
+.app-shell.dark .round-arrow:hover { background: var(--forest-700); color: white; }
+
+.app-shell.dark .card-category { color: var(--forest-700); }
+
+.app-shell.dark .empty-state { color: var(--ink-300); }
+
+.app-shell.dark .arquivo-header { border-bottom-color: var(--ink-100); }
+
+.app-shell.dark .edicao { border-color: var(--ink-200); }
+.app-shell.dark .edicao:hover { background: var(--forest-50); border-color: var(--forest-700); }
+.app-shell.dark .edicao-icon { border-color: var(--ink-200); }
+
+.app-shell.dark .filtros-bar { background: var(--forest-50); border-color: var(--ink-100); }
+.app-shell.dark .filtro-titulo { color: var(--ink-700); }
+.app-shell.dark .filtro-label { color: var(--ink-300); }
+.app-shell.dark .filtro-pills button { color: var(--ink-300); background: var(--forest-100); }
+.app-shell.dark .filtro-pills button:hover { color: var(--forest-700); background: var(--forest-200); }
+.app-shell.dark .filtro-pills button.active { color: white; background: var(--forest-700); }
+.app-shell.dark .filtro-select { color: var(--ink-700); background: var(--forest-100); border-color: var(--ink-200); }
+
+.app-shell.dark .turma-a span { color: var(--forest-700); }
+.app-shell.dark .turma-b span { color: var(--sky-400); }
+
+.app-shell.dark .button-light { background: var(--ink-100); color: var(--forest-800); }
+.app-shell.dark .button-light:hover { background: var(--ink-200); }
+
+.app-shell.dark .text-link { color: var(--forest-700); }
+
+.app-shell.dark .pdf-page { background: #0b110e; }
+
+@media (max-width: 768px) {
+  .app-shell.dark .main-nav { background: var(--cream); border-bottom-color: var(--ink-100); }
 }
