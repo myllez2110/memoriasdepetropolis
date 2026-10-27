@@ -891,7 +891,7 @@ img { display: block; max-width: 100%; }
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
-.app-shell.dark .brand-name { color: var(--ink-100); }
+.app-shell.dark .brand-name { color:#e0a64a }
 
 .app-shell.dark .main-nav button { color: var(--ink-300); }
 .app-shell.dark .main-nav button:hover { color: var(--forest-700); background: var(--forest-50); }
@@ -967,4 +967,9 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 768px) {
   .app-shell.dark .main-nav { background: var(--cream); border-bottom-color: var(--ink-100); }
+}
+.app-shell,
+.app-shell * {
+  transition: background-color 0.4s ease, color 0.4s ease,
+              border-color 0.4s ease, box-shadow 0.4s ease;
 }
