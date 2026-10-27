@@ -188,7 +188,15 @@ img { display: block; max-width: 100%; }
 
 /* Hero */
 .hero-section { position: relative; height: 92vh; min-height: 620px; overflow: hidden; display: flex; align-items: center; }
-.hero-image { position: absolute; inset: 0; background-image: url('https://images.pexels.com/photos/8533860/pexels-photo-8533860.jpeg?auto=compress&cs=tinysrgb&w=1600'); background-size: cover; background-position: center; transform: scale(1.05); animation: heroZoom 18s ease-in-out infinite alternate; }
+.hero-image {
+    position: absolute;
+    inset: 0;
+    background-image: url("images/catedral.jpg");
+    background-size: cover;
+    background-position: center;
+    transform: scale(1);
+    animation: heroZoom 18s ease-in-out infinite alternate;
+}
 @keyframes heroZoom { from { transform: scale(1.05); } to { transform: scale(1.15); } }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(12, 26, 20, 0.82) 0%, rgba(12, 26, 20, 0.5) 45%, rgba(12, 26, 20, 0.2) 100%); }
 .hero-content { position: relative; z-index: 2; width: 100%; display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 80px; }
@@ -632,6 +640,74 @@ img { display: block; max-width: 100%; }
   min-height: 0;
   border: none;
   background: #333;
+}
+
+.pdf-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+}
+
+.pdf-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  border-top-color: var(--amber-400);
+  border-radius: 50%;
+  animation: pdfSpin 0.9s linear infinite;
+}
+
+@keyframes pdfSpin { to { transform: rotate(360deg); } }
+
+.pdf-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.pdf-error-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 420px;
+}
+
+.pdf-error-icon {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: rgba(251, 173, 6, 0.12);
+  color: var(--amber-400);
+  margin-bottom: 24px;
+}
+
+.pdf-error-content h2 {
+  font-size: 28px;
+  color: white;
+  margin-bottom: 14px;
+}
+
+.pdf-error-content p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.pdf-error-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* RESPONSIVO */

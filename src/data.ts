@@ -24,7 +24,7 @@ export const edicoes: Edicao[] = [
 export const images = {
   hero: 'https://images.pexels.com/photos/8533860/pexels-photo-8533860.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   mountain: 'https://images.pexels.com/photos/30057008/pexels-photo-30057008.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  sunrise: 'https://images.pexels.com/photos/12931460/pexels-photo-12931460.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+  sunrise: 'images/cefet.jpg',
   ridge: 'https://images.pexels.com/photos/17767111/pexels-photo-17767111.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   dawn: 'https://images.pexels.com/photos/16960973/pexels-photo-16960973.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   forest: 'https://images.pexels.com/photos/15639315/pexels-photo-15639315.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',

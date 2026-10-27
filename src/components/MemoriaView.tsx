@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, FileText, Filter } from 'lucide-react';
+import { TriangleAlert as AlertTriangle, ArrowLeft, ArrowRight, FileText, Filter, RotateCw } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 import { edicoes, mesesOrdem } from '../data';
@@ -9,6 +9,8 @@ type TurmaFiltro = 'todas' | 'A' | 'B';
 export function MemoriaView() {
   const [pdfSelecionado, setPdfSelecionado] = useState<string | null>(null);
   const [tituloPdf, setTituloPdf] = useState('');
+  const [pdfErro, setPdfErro] = useState(false);
+  const [pdfCarregando, setPdfCarregando] = useState(false);
   const [turmaFiltro, setTurmaFiltro] = useState<TurmaFiltro>('todas');
   const [anoFiltro, setAnoFiltro] = useState<number | 'todos'>('todos');
   const [mesFiltro, setMesFiltro] = useState<string>('todos');
@@ -39,14 +41,51 @@ export function MemoriaView() {
     return Object.entries(grupos).sort(([a], [b]) => Number(b) - Number(a));
   }, [edicoesFiltradas]);
 
-  function abrirPdf(pdf: string, mes: string, ano: number, turma: string) {
+  async function verificarPdf(pdf: string): Promise<boolean> {
+    try {
+      const resposta = await fetch(pdf, { method: 'GET' });
+      if (!resposta.ok) return false;
+      const tipo = resposta.headers.get('content-type') || '';
+      return tipo.includes('application/pdf');
+    } catch {
+      return false;
+    }
+  }
+
+  async function abrirPdf(pdf: string, mes: string, ano: number, turma: string) {
+    const titulo = `${mes} ${ano} · Turma ${turma}`;
+    setTituloPdf(titulo);
+    setPdfCarregando(true);
+    setPdfErro(false);
+
+    const existe = await verificarPdf(pdf);
+    setPdfCarregando(false);
+
+    if (!existe) {
+      setPdfSelecionado(null);
+      setPdfErro(true);
+      return;
+    }
+
     setPdfSelecionado(pdf);
-    setTituloPdf(`${mes} ${ano} · Turma ${turma}`);
+  }
+
+  function tentarNovamente() {
+    if (pdfSelecionado) {
+      setPdfErro(false);
+      setPdfCarregando(true);
+      verificarPdf(pdfSelecionado).then((existe) => {
+        setPdfCarregando(false);
+        if (!existe) setPdfErro(true);
+      });
+    }
   }
 
   function fecharPdf() {
     setPdfSelecionado(null);
     setTituloPdf('');
+    setPdfErro(false);
+    setPdfCarregando(false);
   }
 
   function limparFiltros() {
@@ -58,7 +97,44 @@ export function MemoriaView() {
   const temFiltroAtivo =
     turmaFiltro !== 'todas' || anoFiltro !== 'todos' || mesFiltro !== 'todos';
 
-  if (pdfSelecionado) {
+  if (pdfErro) {
+    return (
+      <main className="pdf-page">
+        <header className="pdf-header">
+          <button className="pdf-back" onClick={fecharPdf}>
+            <ArrowLeft size={18} />
+            Voltar ao arquivo
+          </button>
+          <div className="pdf-heading">
+            <span>Folha da Memória</span>
+            <h1>{tituloPdf}</h1>
+          </div>
+        </header>
+        <section className="pdf-viewer pdf-error">
+          <div className="pdf-error-content">
+            <div className="pdf-error-icon">
+              <AlertTriangle size={40} />
+            </div>
+            <h2>Edição indisponível</h2>
+            <p>
+              Não conseguimos encontrar o arquivo desta edição.
+              Ele pode ainda não ter sido publicado ou foi removido.
+            </p>
+            <div className="pdf-error-actions">
+              <button className="button button-light" onClick={tentarNovamente}>
+                <RotateCw size={16} /> Tentar novamente
+              </button>
+              <button className="button button-primary" onClick={fecharPdf}>
+                <ArrowLeft size={16} /> Voltar ao arquivo
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  if (pdfCarregando || pdfSelecionado) {
     return (
       <main className="pdf-page">
         <header className="pdf-header">
@@ -74,10 +150,18 @@ export function MemoriaView() {
         </header>
 
         <section className="pdf-viewer">
-          <iframe
-            src={`${pdfSelecionado}#toolbar=1&navpanes=0`}
-            title={tituloPdf}
-          />
+          {pdfCarregando ? (
+            <div className="pdf-loading">
+              <div className="pdf-spinner" />
+              <p>Carregando edição…</p>
+            </div>
+          ) : (
+            <iframe
+              src={`${pdfSelecionado}#toolbar=1&navpanes=0`}
+              title={tituloPdf}
+              onError={() => setPdfErro(true)}
+            />
+          )}
         </section>
       </main>
     );
