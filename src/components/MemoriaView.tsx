@@ -107,7 +107,7 @@ export function MemoriaView() {
           </button>
           <div className="pdf-heading">
             <span>Folha da Memória</span>
-            <h1>{tituloPdf}</h1>
+            <h1>{`${tituloPdf}#toolbar=1&navpanes=0&view=FitH`}</h1>
           </div>
         </header>
         <section className="pdf-viewer pdf-error">
